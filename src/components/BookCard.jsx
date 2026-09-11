@@ -10,7 +10,9 @@ export default function BookCard({ book, onReserve }) {
       <span className={`badge ${available ? "badge-ok" : "badge-off"}`}>
         {available ? "Disponível" : "Reservado"}
       </span>
-      <button onClick={() => onReserve(id)}>Reservar</button>
+      <button onClick={() => onReserve(id)}>
+        {available ? "Reservar" : "Devolver"}
+      </button>
     </article>
   );
 }

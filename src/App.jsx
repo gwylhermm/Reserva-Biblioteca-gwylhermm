@@ -1,6 +1,11 @@
 import "./App.css";
 import { books } from "./data/books";
 import BookList from "./components/BookList";
+import Panel from "./components/Panel";
+
+function handleReserve(bookId) {
+  window.alert(`Livro ${bookId} — ação ainda não implementada`);
+}
 
 export default function App() {
   return (
@@ -11,7 +16,9 @@ export default function App() {
         <p>Consulte a disponibilidade e reserve o que precisar.</p>
       </header>
 
-      <BookList books={books} />
+      <Panel title="Acervo">
+        <BookList books={books} onReserve={handleReserve} />
+      </Panel>
     </main>
   );
 }

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { BooksContext } from "../context/BooksContext";
 
 const initialForm = { title: "", author: "" };
 
-export default function BookForm({ onAddBook }) {
+export default function BookForm() {
+  const { addBook } = useContext(BooksContext);
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
 
@@ -19,7 +21,7 @@ export default function BookForm({ onAddBook }) {
       return;
     }
 
-    onAddBook({
+    addBook({
       id: crypto.randomUUID(),
       title: form.title,
       author: form.author,

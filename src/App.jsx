@@ -1,23 +1,32 @@
+import { Routes, Route, NavLink } from "react-router";
 import "./App.css";
-import BookList from "./components/BookList";
-import BookForm from "./components/BookForm";
-import Panel from "./components/Panel";
+import AcervoPage from "./pages/AcervoPage";
+import NovoLivroPage from "./pages/NovoLivroPage";
+import SobrePage from "./pages/SobrePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
-    <main className="app">
-      <header className="hero">
-        <p className="eyebrow">BIBLIOTECA ITEAM</p>
-        <h1>Reserva de livros do acervo.</h1>
+    <>
+      <header className="app-header">
+        <span>BIBLIOTECA ITEAM</span>
+        <nav>
+          <NavLink to="/" end>
+            Acervo
+          </NavLink>
+          <NavLink to="/novo">Novo livro</NavLink>
+          <NavLink to="/sobre">Sobre</NavLink>
+        </nav>
       </header>
 
-      <Panel title="Novo livro">
-        <BookForm />
-      </Panel>
-
-      <Panel title="Acervo">
-        <BookList />
-      </Panel>
-    </main>
+      <main className="app">
+        <Routes>
+          <Route path="/" element={<AcervoPage />} />
+          <Route path="/novo" element={<NovoLivroPage />} />
+          <Route path="/sobre" element={<SobrePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+    </>
   );
 }
